@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ApplyTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-08T19:54:40" hostname="DESKTOP-M91G0UC" time="10.939">
+  <properties/>
+  <testcase name="clickSubmitApplication" classname="ApplyTests" time="10.939"/>
+  <system-out><![CDATA[JS is Ready!
+JS is Ready!
+JS is Ready!
+JS is Ready!
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 85.0.4183.87 (cd6713ebf92fa1cacc0f1a598df280093af0c5d7-refs/branch-heads/4183@{#1689}) on port 36111
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Sep 08, 2020 10:54:32 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+]]></system-err>
+</testsuite>

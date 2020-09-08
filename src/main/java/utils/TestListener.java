@@ -1,0 +1,88 @@
+package utils;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.TestListenerAdapter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+
+public class TestListener extends TestListenerAdapter {
+
+    private boolean createFile(File screenshot) {
+        boolean fileCreated = false;
+
+        if (screenshot.exists()) {
+            fileCreated = true;
+        } else {
+            File parentDirectory = new File(screenshot.getParent());
+            if (parentDirectory.exists() || parentDirectory.mkdirs()) {
+                try {
+                    fileCreated = screenshot.createNewFile();
+                } catch (IOException errorCreatingScreenshot) {
+                    errorCreatingScreenshot.printStackTrace();
+                }
+            }
+        }
+
+        return fileCreated;
+    }
+
+    private void writeScreenshotToFile(WebDriver driver, File screenshot) {
+        try {
+            FileOutputStream screenshotStream = new FileOutputStream(screenshot);
+            screenshotStream.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
+            screenshotStream.close();
+        } catch (IOException unableToWriteScreenshot) {
+            System.err.println("Unable to write " + screenshot.getAbsolutePath());
+            unableToWriteScreenshot.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onTestFailure(ITestResult failingTest) {
+        try {
+            WebDriver driver = LocalThreadManager.getDriver();
+            String screenshotDirectory = System.getProperty("user.dir") + "/src/main/resources/screenshots";
+            String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_" + failingTest.getName() + ".png";
+            File screenshot = new File(screenshotAbsolutePath);
+            if (createFile(screenshot)) {
+                try {
+                    writeScreenshotToFile(driver, screenshot);
+                } catch (ClassCastException weNeedToAugmentOurDriverObject) {
+                    writeScreenshotToFile(new Augmenter().augment(driver), screenshot);
+                }
+                System.out.println("Written screenshot to " + screenshotAbsolutePath);
+            } else {
+                System.err.println("Unable to create " + screenshotAbsolutePath);
+            }
+        } catch (Exception ex) {
+            System.err.println("Unable to capture screenshot...");
+            ex.printStackTrace();
+        }
+    }
+
+    public void onFinish(ITestContext context) {
+    }
+
+    public void onTestStart(ITestResult result) {
+    }
+
+    public void onTestSuccess(ITestResult result) {
+    }
+
+    public void onTestSkipped(ITestResult result) {
+    }
+
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+    }
+
+    public void onStart(ITestContext context) {
+    }
+}
