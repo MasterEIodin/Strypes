@@ -1,5 +1,7 @@
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.ApplicationPage;
 import pages.HomePage;
@@ -7,6 +9,7 @@ import pages.VacanciesPage;
 import config.BaseSetup;
 import utils.DataGenerator;
 
+@Listeners(config.TestListener.class)
 public class ApplyTests extends BaseSetup {
 
     HomePage homePage = new HomePage();

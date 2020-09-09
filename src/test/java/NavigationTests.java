@@ -1,11 +1,13 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.PodcastPage;
 import pages.VacanciesPage;
 import config.BaseSetup;
 
+@Listeners(config.TestListener.class)
 public class NavigationTests extends BaseSetup {
 
     private HomePage homePage = new HomePage();
