@@ -1,4 +1,4 @@
-package utils;
+package config;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,8 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-import static utils.LocalThreadManager.getDriver;
-import static utils.LocalThreadManager.setWebDriver;
+import static config.LocalThreadManager.getDriver;
+import static config.LocalThreadManager.setWebDriver;
 
 public class BaseSetup {
     private static final String OS = System.getProperty("os.name").toLowerCase();

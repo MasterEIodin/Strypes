@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.PodcastPage;
 import pages.VacanciesPage;
-import utils.BaseSetup;
+import config.BaseSetup;
 
 public class NavigationTests extends BaseSetup {
 

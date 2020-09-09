@@ -3,7 +3,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SubscribePage;
-import utils.BaseSetup;
+import config.BaseSetup;
 import utils.DataGenerator;
 
 public class SubscribeTests extends BaseSetup {
@@ -29,7 +29,7 @@ public class SubscribeTests extends BaseSetup {
     @Test
     public void tryToSubscribeInvalidEmailAddress() {
         subscribePage.fillEmailAddress("Invalid Email Address");
-        Assert.assertTrue(subscribePage.isSubscribeButtonClickable());
+        Assert.assertTrue(subscribePage.isSubscribeButtonNotClickable());
     }
 
     @Test

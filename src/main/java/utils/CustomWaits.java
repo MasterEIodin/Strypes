@@ -4,18 +4,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static utils.LocalThreadManager.getDriver;
+import static config.LocalThreadManager.getDriver;
 
 public class CustomWaits  {
-
-    private static WebDriverWait jsWait;
-    private static JavascriptExecutor jsExec;
-
-    //Get the driver
-    public static void setDriver () {
-        jsWait = new WebDriverWait(getDriver(), 10);
-        jsExec = (JavascriptExecutor) getDriver();
-    }
 
     //Wait Until JS Ready
     public static void waitUntilJSReady() {

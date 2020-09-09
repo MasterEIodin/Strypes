@@ -1,10 +1,9 @@
 package pages;
 
-import com.github.javafaker.App;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import utils.ElementOperations;
+
+import java.io.File;
 
 public class ApplicationPage {
 
@@ -17,9 +16,9 @@ public class ApplicationPage {
     private By sourceDropdown = By.cssSelector("[id='j_id0:SiteTemplate:j_id266:j_id269:blocksection_1:j_id317:0:j_id322:j_id325'");
     private By source = By.xpath("//option[contains(text(),'Other')]");
     private By acceptTermsCheckbox = By.cssSelector("[name='j_id0:SiteTemplate:j_id266:j_id269:blocksection_19:j_id459:j_id474'");
-    private By uploadButtonLocator = By.cssSelector("[id='j_id0:SiteTemplate:j_id266:j_id269:j_id412:0:j_id414:j_id415:j_id421'");
+    private By uploadButton = By.cssSelector("[id='j_id0:SiteTemplate:j_id266:j_id269:j_id412:0:j_id414:j_id415:j_id421'");
     private By submitApplicationButton = By.cssSelector("[name='j_id0:SiteTemplate:j_id206:j_id208:j_id231'");
-
+    private By invalidEmailAddressError = By.xpath("//div[contains(text(),': The value entered for this field is not valid')]");
 
     public ApplicationPage fillFirstName(String firstName) {
         elementOperations.fillInput(firstNameField, firstName);
@@ -61,7 +60,8 @@ public class ApplicationPage {
     }
 
     public ApplicationPage clickUploadDocumentButton() {
-        elementOperations.sendImagePath(uploadButtonLocator, "D:/projects/strypes/CV.pdf");
+        File file = new File(getClass().getClassLoader().getResource("CV.pdf").getFile());
+        elementOperations.sendImagePath(uploadButton, file.getAbsolutePath());
         return this;
     }
 
@@ -69,4 +69,6 @@ public class ApplicationPage {
         elementOperations.clickButton(submitApplicationButton);
         return this;
     }
+
+    public boolean isEmailErrorMessageVisible() { return elementOperations.isElementVisible(invalidEmailAddressError); }
 }

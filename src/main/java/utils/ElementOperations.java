@@ -1,14 +1,11 @@
 package utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static utils.LocalThreadManager.getDriver;
+import static config.LocalThreadManager.getDriver;
 
 public class ElementOperations {
 

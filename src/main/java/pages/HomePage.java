@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import utils.ElementOperations;
 
-import static utils.LocalThreadManager.getDriver;
+import static config.LocalThreadManager.getDriver;
 
 public class HomePage {
 

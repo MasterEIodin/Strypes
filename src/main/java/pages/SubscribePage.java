@@ -16,12 +16,11 @@ public class SubscribePage {
     }
 
     public SubscribePage clickSubscribeButton() {
-        elementOperations.waitElementToBeClickable(subscribeButton);
         elementOperations.clickButton(subscribeButton);
         return this;
     }
 
-    public boolean isSubscribeButtonClickable() { return elementOperations.isElementNotClickable(subscribeButton); }
+    public boolean isSubscribeButtonNotClickable() { return elementOperations.isElementNotClickable(subscribeButton); }
 
     public boolean isToastVisible() { return elementOperations.isElementVisible(toastSuccessful); }
 }
