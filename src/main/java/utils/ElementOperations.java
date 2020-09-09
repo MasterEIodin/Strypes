@@ -52,6 +52,11 @@ public class ElementOperations {
         getDriver().findElement(locator).click();
     }
 
+    public void clickButtonWithoutWaiting(By locator) {
+        CustomWaits.waitUntilJSReady();
+        getDriver().findElement(locator).click();
+    }
+
     public void fillInput(By locator, String text) {
         CustomWaits.waitUntilJSReady();
         waitElementToBeClickable(locator);

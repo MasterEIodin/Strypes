@@ -16,7 +16,7 @@ public class SubscribePage {
     }
 
     public SubscribePage clickSubscribeButton() {
-        elementOperations.clickButton(subscribeButton);
+        elementOperations.clickButtonWithoutWaiting(subscribeButton);
         return this;
     }
 
